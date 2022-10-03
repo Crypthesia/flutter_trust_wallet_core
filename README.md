@@ -44,6 +44,13 @@ Go to your android project folder and open AndroidManifest.xml file, Add the bel
 
 min ios platform support >=13.0
 
+If you see this error when running `iOS example` code:
+`Unable to install vendored xcframework SwiftProtobuf for Pod flutter_trust_wallet_core, because it contains both static and dynamic frameworks`, that is very likely you need to update `cocoapod`. Note that you could see this error in a new vscode window, even though you had none in another vscode window.
+We can simply run this brew cmd in VSCode terminal.
+
+`brew install cocoapods`
+
+
 ## Flutter App Code
 
 before use wallet_core, call below function once.
