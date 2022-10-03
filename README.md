@@ -1,12 +1,20 @@
 # Flutter TrustWallet WalletCore
 
-Crypthesia includes in this repository libraries and protobuf of `WalletCore 3.0.4`. This fork is more up-to-date comparing to pub.dev version and the repo linked in Wallet-Core Readme.
+`Crypthesia` includes in this repository libraries and protobuf of `WalletCore 3.0.4`. This fork is more up-to-date comparing to pub.dev version and the repo linked in Wallet-Core Readme.
 
 This repository is a Flutter plugin of `TrustWallet WalletCore` library. The full list of APIs can be seen here [https://github.com/trustwallet/wallet-core/tree/master/include/TrustWalletCore](https://github.com/trustwallet/wallet-core/tree/master/include/TrustWalletCore)
 
 # Add This Pluggin to Your Flutter Project
 
 ## pubspec.yaml
+
+- Add this pluggin to the `dependencies:`
+
+```
+flutter_trust_wallet_core:
+    git:
+      url: https://github.com/Crypthesia/flutter_trust_wallet_core
+```
 
 ## Android
 
@@ -50,7 +58,6 @@ We can simply run this brew cmd in VSCode terminal.
 
 `brew install cocoapods`
 
-
 ## Flutter App Code
 
 before use wallet_core, call below function once.
@@ -87,8 +94,6 @@ We will first describe what WalletCore library files we need and where to put th
 
 - From root folder of `wallet-core` folder, run this command `protoc -I=./src/proto --dart_out=./dart_proto/ ./src/proto/*.proto`. This command will look for all .proto files under src/proto and generate the dart versions and put them under dart_proto folder.
 
--
-
 ## Build WalletCore
 
 Because official lib build flag in CmakeLists.txt set(CMAKE_CXX_VISIBILITY_PRESET hidden), that will cause android exception when dart ffi lookup function.
@@ -108,6 +113,5 @@ to
 ```
  set(CMAKE_CXX_VISIBILITY_PRESET default)
 ```
-
 
 And then you can (re)run bootstrap.sh again, following with `tools\android-build` to generate `.aar` file.
