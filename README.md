@@ -24,6 +24,22 @@ in your android project MainActivity.kt file
 
 minSdk require >=23
 
+If you see this error "Targeting S+ (version 31 and above) requires that an explicit value for android:exported be defined when intent filters are present]", simply do this:
+Go to your android project folder and open AndroidManifest.xml file, Add the below code in activity
+
+- `android:exported="true"`
+
+- Example
+
+```
+<activity
+     android:name=".MainActivity"
+     android:exported="true"
+     android:launchMode="singleTop"
+     android:theme="@style/LaunchTheme"
+ </activity>
+```
+
 ## iOS
 
 min ios platform support >=13.0
