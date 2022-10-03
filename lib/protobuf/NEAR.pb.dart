@@ -3,7 +3,7 @@
 //  source: NEAR.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
@@ -75,6 +75,7 @@ class FunctionCallPermission extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FunctionCallPermission', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TW.NEAR.Proto'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allowance', $pb.PbFieldType.OY)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiverId')
+    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'methodNames')
     ..hasRequiredFields = false
   ;
 
@@ -82,6 +83,7 @@ class FunctionCallPermission extends $pb.GeneratedMessage {
   factory FunctionCallPermission({
     $core.List<$core.int>? allowance,
     $core.String? receiverId,
+    $core.Iterable<$core.String>? methodNames,
   }) {
     final _result = create();
     if (allowance != null) {
@@ -89,6 +91,9 @@ class FunctionCallPermission extends $pb.GeneratedMessage {
     }
     if (receiverId != null) {
       _result.receiverId = receiverId;
+    }
+    if (methodNames != null) {
+      _result.methodNames.addAll(methodNames);
     }
     return _result;
   }
@@ -130,6 +135,9 @@ class FunctionCallPermission extends $pb.GeneratedMessage {
   $core.bool hasReceiverId() => $_has(1);
   @$pb.TagNumber(2)
   void clearReceiverId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.String> get methodNames => $_getList(2);
 }
 
 class FullAccessPermission extends $pb.GeneratedMessage {
@@ -333,7 +341,7 @@ class DeployContract extends $pb.GeneratedMessage {
 
 class FunctionCall extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FunctionCall', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TW.NEAR.Proto'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'methodName', $pb.PbFieldType.OY)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'methodName')
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'args', $pb.PbFieldType.OY)
     ..a<$fixnum.Int64>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gas', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deposit', $pb.PbFieldType.OY)
@@ -342,7 +350,7 @@ class FunctionCall extends $pb.GeneratedMessage {
 
   FunctionCall._() : super();
   factory FunctionCall({
-    $core.List<$core.int>? methodName,
+    $core.String? methodName,
     $core.List<$core.int>? args,
     $fixnum.Int64? gas,
     $core.List<$core.int>? deposit,
@@ -384,9 +392,9 @@ class FunctionCall extends $pb.GeneratedMessage {
   static FunctionCall? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get methodName => $_getN(0);
+  $core.String get methodName => $_getSZ(0);
   @$pb.TagNumber(1)
-  set methodName($core.List<$core.int> v) { $_setBytes(0, v); }
+  set methodName($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasMethodName() => $_has(0);
   @$pb.TagNumber(1)
@@ -470,14 +478,14 @@ class Transfer extends $pb.GeneratedMessage {
 class Stake extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Stake', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TW.NEAR.Proto'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stake', $pb.PbFieldType.OY)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicKey')
+    ..aOM<PublicKey>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicKey', subBuilder: PublicKey.create)
     ..hasRequiredFields = false
   ;
 
   Stake._() : super();
   factory Stake({
     $core.List<$core.int>? stake,
-    $core.String? publicKey,
+    PublicKey? publicKey,
   }) {
     final _result = create();
     if (stake != null) {
@@ -519,13 +527,15 @@ class Stake extends $pb.GeneratedMessage {
   void clearStake() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get publicKey => $_getSZ(1);
+  PublicKey get publicKey => $_getN(1);
   @$pb.TagNumber(2)
-  set publicKey($core.String v) { $_setString(1, v); }
+  set publicKey(PublicKey v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPublicKey() => $_has(1);
   @$pb.TagNumber(2)
   void clearPublicKey() => clearField(2);
+  @$pb.TagNumber(2)
+  PublicKey ensurePublicKey() => $_ensure(1);
 }
 
 class AddKey extends $pb.GeneratedMessage {
@@ -991,16 +1001,21 @@ class SigningInput extends $pb.GeneratedMessage {
 class SigningOutput extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SigningOutput', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TW.NEAR.Proto'), createEmptyInstance: create)
     ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signedTransaction', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
 
   SigningOutput._() : super();
   factory SigningOutput({
     $core.List<$core.int>? signedTransaction,
+    $core.List<$core.int>? hash,
   }) {
     final _result = create();
     if (signedTransaction != null) {
       _result.signedTransaction = signedTransaction;
+    }
+    if (hash != null) {
+      _result.hash = hash;
     }
     return _result;
   }
@@ -1033,5 +1048,14 @@ class SigningOutput extends $pb.GeneratedMessage {
   $core.bool hasSignedTransaction() => $_has(0);
   @$pb.TagNumber(1)
   void clearSignedTransaction() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get hash => $_getN(1);
+  @$pb.TagNumber(2)
+  set hash($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasHash() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearHash() => clearField(2);
 }
 

@@ -3,7 +3,7 @@
 //  source: Polkadot.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
@@ -76,8 +76,9 @@ const Staking$json = const {
     const {'1': 'withdraw_unbonded', '3': 5, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.WithdrawUnbonded', '9': 0, '10': 'withdrawUnbonded'},
     const {'1': 'nominate', '3': 6, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Nominate', '9': 0, '10': 'nominate'},
     const {'1': 'chill', '3': 7, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Chill', '9': 0, '10': 'chill'},
+    const {'1': 'chill_and_unbond', '3': 8, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.ChillAndUnbond', '9': 0, '10': 'chillAndUnbond'},
   ],
-  '3': const [Staking_Bond$json, Staking_BondAndNominate$json, Staking_BondExtra$json, Staking_Unbond$json, Staking_WithdrawUnbonded$json, Staking_Nominate$json, Staking_Chill$json],
+  '3': const [Staking_Bond$json, Staking_BondAndNominate$json, Staking_BondExtra$json, Staking_Unbond$json, Staking_WithdrawUnbonded$json, Staking_Nominate$json, Staking_ChillAndUnbond$json, Staking_Chill$json],
   '8': const [
     const {'1': 'message_oneof'},
   ],
@@ -137,12 +138,20 @@ const Staking_Nominate$json = const {
 };
 
 @$core.Deprecated('Use stakingDescriptor instead')
+const Staking_ChillAndUnbond$json = const {
+  '1': 'ChillAndUnbond',
+  '2': const [
+    const {'1': 'value', '3': 1, '4': 1, '5': 12, '10': 'value'},
+  ],
+};
+
+@$core.Deprecated('Use stakingDescriptor instead')
 const Staking_Chill$json = const {
   '1': 'Chill',
 };
 
 /// Descriptor for `Staking`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List stakingDescriptor = $convert.base64Decode('CgdTdGFraW5nEjUKBGJvbmQYASABKAsyHy5UVy5Qb2xrYWRvdC5Qcm90by5TdGFraW5nLkJvbmRIAFIEYm9uZBJYChFib25kX2FuZF9ub21pbmF0ZRgCIAEoCzIqLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuQm9uZEFuZE5vbWluYXRlSABSD2JvbmRBbmROb21pbmF0ZRJFCgpib25kX2V4dHJhGAMgASgLMiQuVFcuUG9sa2Fkb3QuUHJvdG8uU3Rha2luZy5Cb25kRXh0cmFIAFIJYm9uZEV4dHJhEjsKBnVuYm9uZBgEIAEoCzIhLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuVW5ib25kSABSBnVuYm9uZBJaChF3aXRoZHJhd191bmJvbmRlZBgFIAEoCzIrLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuV2l0aGRyYXdVbmJvbmRlZEgAUhB3aXRoZHJhd1VuYm9uZGVkEkEKCG5vbWluYXRlGAYgASgLMiMuVFcuUG9sa2Fkb3QuUHJvdG8uU3Rha2luZy5Ob21pbmF0ZUgAUghub21pbmF0ZRI4CgVjaGlsbBgHIAEoCzIgLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuQ2hpbGxIAFIFY2hpbGwakQEKBEJvbmQSHgoKY29udHJvbGxlchgBIAEoCVIKY29udHJvbGxlchIUCgV2YWx1ZRgCIAEoDFIFdmFsdWUSUwoScmV3YXJkX2Rlc3RpbmF0aW9uGAMgASgOMiQuVFcuUG9sa2Fkb3QuUHJvdG8uUmV3YXJkRGVzdGluYXRpb25SEXJld2FyZERlc3RpbmF0aW9uGrwBCg9Cb25kQW5kTm9taW5hdGUSHgoKY29udHJvbGxlchgBIAEoCVIKY29udHJvbGxlchIUCgV2YWx1ZRgCIAEoDFIFdmFsdWUSUwoScmV3YXJkX2Rlc3RpbmF0aW9uGAMgASgOMiQuVFcuUG9sa2Fkb3QuUHJvdG8uUmV3YXJkRGVzdGluYXRpb25SEXJld2FyZERlc3RpbmF0aW9uEh4KCm5vbWluYXRvcnMYBCADKAlSCm5vbWluYXRvcnMaIQoJQm9uZEV4dHJhEhQKBXZhbHVlGAEgASgMUgV2YWx1ZRoeCgZVbmJvbmQSFAoFdmFsdWUYASABKAxSBXZhbHVlGjkKEFdpdGhkcmF3VW5ib25kZWQSJQoOc2xhc2hpbmdfc3BhbnMYASABKAVSDXNsYXNoaW5nU3BhbnMaKgoITm9taW5hdGUSHgoKbm9taW5hdG9ycxgBIAMoCVIKbm9taW5hdG9ycxoHCgVDaGlsbEIPCg1tZXNzYWdlX29uZW9m');
+final $typed_data.Uint8List stakingDescriptor = $convert.base64Decode('CgdTdGFraW5nEjUKBGJvbmQYASABKAsyHy5UVy5Qb2xrYWRvdC5Qcm90by5TdGFraW5nLkJvbmRIAFIEYm9uZBJYChFib25kX2FuZF9ub21pbmF0ZRgCIAEoCzIqLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuQm9uZEFuZE5vbWluYXRlSABSD2JvbmRBbmROb21pbmF0ZRJFCgpib25kX2V4dHJhGAMgASgLMiQuVFcuUG9sa2Fkb3QuUHJvdG8uU3Rha2luZy5Cb25kRXh0cmFIAFIJYm9uZEV4dHJhEjsKBnVuYm9uZBgEIAEoCzIhLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuVW5ib25kSABSBnVuYm9uZBJaChF3aXRoZHJhd191bmJvbmRlZBgFIAEoCzIrLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuV2l0aGRyYXdVbmJvbmRlZEgAUhB3aXRoZHJhd1VuYm9uZGVkEkEKCG5vbWluYXRlGAYgASgLMiMuVFcuUG9sa2Fkb3QuUHJvdG8uU3Rha2luZy5Ob21pbmF0ZUgAUghub21pbmF0ZRI4CgVjaGlsbBgHIAEoCzIgLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuQ2hpbGxIAFIFY2hpbGwSVQoQY2hpbGxfYW5kX3VuYm9uZBgIIAEoCzIpLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmcuQ2hpbGxBbmRVbmJvbmRIAFIOY2hpbGxBbmRVbmJvbmQakQEKBEJvbmQSHgoKY29udHJvbGxlchgBIAEoCVIKY29udHJvbGxlchIUCgV2YWx1ZRgCIAEoDFIFdmFsdWUSUwoScmV3YXJkX2Rlc3RpbmF0aW9uGAMgASgOMiQuVFcuUG9sa2Fkb3QuUHJvdG8uUmV3YXJkRGVzdGluYXRpb25SEXJld2FyZERlc3RpbmF0aW9uGrwBCg9Cb25kQW5kTm9taW5hdGUSHgoKY29udHJvbGxlchgBIAEoCVIKY29udHJvbGxlchIUCgV2YWx1ZRgCIAEoDFIFdmFsdWUSUwoScmV3YXJkX2Rlc3RpbmF0aW9uGAMgASgOMiQuVFcuUG9sa2Fkb3QuUHJvdG8uUmV3YXJkRGVzdGluYXRpb25SEXJld2FyZERlc3RpbmF0aW9uEh4KCm5vbWluYXRvcnMYBCADKAlSCm5vbWluYXRvcnMaIQoJQm9uZEV4dHJhEhQKBXZhbHVlGAEgASgMUgV2YWx1ZRoeCgZVbmJvbmQSFAoFdmFsdWUYASABKAxSBXZhbHVlGjkKEFdpdGhkcmF3VW5ib25kZWQSJQoOc2xhc2hpbmdfc3BhbnMYASABKAVSDXNsYXNoaW5nU3BhbnMaKgoITm9taW5hdGUSHgoKbm9taW5hdG9ycxgBIAMoCVIKbm9taW5hdG9ycxomCg5DaGlsbEFuZFVuYm9uZBIUCgV2YWx1ZRgBIAEoDFIFdmFsdWUaBwoFQ2hpbGxCDwoNbWVzc2FnZV9vbmVvZg==');
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = const {
   '1': 'SigningInput',

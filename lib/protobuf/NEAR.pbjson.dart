@@ -3,7 +3,7 @@
 //  source: NEAR.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
@@ -25,11 +25,12 @@ const FunctionCallPermission$json = const {
   '2': const [
     const {'1': 'allowance', '3': 1, '4': 1, '5': 12, '10': 'allowance'},
     const {'1': 'receiver_id', '3': 2, '4': 1, '5': 9, '10': 'receiverId'},
+    const {'1': 'method_names', '3': 3, '4': 3, '5': 9, '10': 'methodNames'},
   ],
 };
 
 /// Descriptor for `FunctionCallPermission`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List functionCallPermissionDescriptor = $convert.base64Decode('ChZGdW5jdGlvbkNhbGxQZXJtaXNzaW9uEhwKCWFsbG93YW5jZRgBIAEoDFIJYWxsb3dhbmNlEh8KC3JlY2VpdmVyX2lkGAIgASgJUgpyZWNlaXZlcklk');
+final $typed_data.Uint8List functionCallPermissionDescriptor = $convert.base64Decode('ChZGdW5jdGlvbkNhbGxQZXJtaXNzaW9uEhwKCWFsbG93YW5jZRgBIAEoDFIJYWxsb3dhbmNlEh8KC3JlY2VpdmVyX2lkGAIgASgJUgpyZWNlaXZlcklkEiEKDG1ldGhvZF9uYW1lcxgDIAMoCVILbWV0aG9kTmFtZXM=');
 @$core.Deprecated('Use fullAccessPermissionDescriptor instead')
 const FullAccessPermission$json = const {
   '1': 'FullAccessPermission',
@@ -73,7 +74,7 @@ final $typed_data.Uint8List deployContractDescriptor = $convert.base64Decode('Cg
 const FunctionCall$json = const {
   '1': 'FunctionCall',
   '2': const [
-    const {'1': 'method_name', '3': 1, '4': 1, '5': 12, '10': 'methodName'},
+    const {'1': 'method_name', '3': 1, '4': 1, '5': 9, '10': 'methodName'},
     const {'1': 'args', '3': 2, '4': 1, '5': 12, '10': 'args'},
     const {'1': 'gas', '3': 3, '4': 1, '5': 4, '10': 'gas'},
     const {'1': 'deposit', '3': 4, '4': 1, '5': 12, '10': 'deposit'},
@@ -81,7 +82,7 @@ const FunctionCall$json = const {
 };
 
 /// Descriptor for `FunctionCall`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List functionCallDescriptor = $convert.base64Decode('CgxGdW5jdGlvbkNhbGwSHwoLbWV0aG9kX25hbWUYASABKAxSCm1ldGhvZE5hbWUSEgoEYXJncxgCIAEoDFIEYXJncxIQCgNnYXMYAyABKARSA2dhcxIYCgdkZXBvc2l0GAQgASgMUgdkZXBvc2l0');
+final $typed_data.Uint8List functionCallDescriptor = $convert.base64Decode('CgxGdW5jdGlvbkNhbGwSHwoLbWV0aG9kX25hbWUYASABKAlSCm1ldGhvZE5hbWUSEgoEYXJncxgCIAEoDFIEYXJncxIQCgNnYXMYAyABKARSA2dhcxIYCgdkZXBvc2l0GAQgASgMUgdkZXBvc2l0');
 @$core.Deprecated('Use transferDescriptor instead')
 const Transfer$json = const {
   '1': 'Transfer',
@@ -97,12 +98,12 @@ const Stake$json = const {
   '1': 'Stake',
   '2': const [
     const {'1': 'stake', '3': 1, '4': 1, '5': 12, '10': 'stake'},
-    const {'1': 'public_key', '3': 2, '4': 1, '5': 9, '10': 'publicKey'},
+    const {'1': 'public_key', '3': 2, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.PublicKey', '10': 'publicKey'},
   ],
 };
 
 /// Descriptor for `Stake`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List stakeDescriptor = $convert.base64Decode('CgVTdGFrZRIUCgVzdGFrZRgBIAEoDFIFc3Rha2USHQoKcHVibGljX2tleRgCIAEoCVIJcHVibGljS2V5');
+final $typed_data.Uint8List stakeDescriptor = $convert.base64Decode('CgVTdGFrZRIUCgVzdGFrZRgBIAEoDFIFc3Rha2USNwoKcHVibGljX2tleRgCIAEoCzIYLlRXLk5FQVIuUHJvdG8uUHVibGljS2V5UglwdWJsaWNLZXk=');
 @$core.Deprecated('Use addKeyDescriptor instead')
 const AddKey$json = const {
   '1': 'AddKey',
@@ -174,8 +175,9 @@ const SigningOutput$json = const {
   '1': 'SigningOutput',
   '2': const [
     const {'1': 'signed_transaction', '3': 1, '4': 1, '5': 12, '10': 'signedTransaction'},
+    const {'1': 'hash', '3': 2, '4': 1, '5': 12, '10': 'hash'},
   ],
 };
 
 /// Descriptor for `SigningOutput`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode('Cg1TaWduaW5nT3V0cHV0Ei0KEnNpZ25lZF90cmFuc2FjdGlvbhgBIAEoDFIRc2lnbmVkVHJhbnNhY3Rpb24=');
+final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode('Cg1TaWduaW5nT3V0cHV0Ei0KEnNpZ25lZF90cmFuc2FjdGlvbhgBIAEoDFIRc2lnbmVkVHJhbnNhY3Rpb24SEgoEaGFzaBgCIAEoDFIEaGFzaA==');

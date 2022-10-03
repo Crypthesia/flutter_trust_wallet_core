@@ -3,13 +3,14 @@
 //  source: Ethereum.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'Ethereum.pbenum.dart';
+import 'Common.pbenum.dart' as $0;
 
 export 'Ethereum.pbenum.dart';
 
@@ -769,6 +770,8 @@ class SigningOutput extends $pb.GeneratedMessage {
     ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'r', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 's', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', $pb.PbFieldType.OY)
+    ..e<$0.SigningError>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'errorMessage')
     ..hasRequiredFields = false
   ;
 
@@ -779,6 +782,8 @@ class SigningOutput extends $pb.GeneratedMessage {
     $core.List<$core.int>? r,
     $core.List<$core.int>? s,
     $core.List<$core.int>? data,
+    $0.SigningError? error,
+    $core.String? errorMessage,
   }) {
     final _result = create();
     if (encoded != null) {
@@ -795,6 +800,12 @@ class SigningOutput extends $pb.GeneratedMessage {
     }
     if (data != null) {
       _result.data = data;
+    }
+    if (error != null) {
+      _result.error = error;
+    }
+    if (errorMessage != null) {
+      _result.errorMessage = errorMessage;
     }
     return _result;
   }
@@ -863,5 +874,23 @@ class SigningOutput extends $pb.GeneratedMessage {
   $core.bool hasData() => $_has(4);
   @$pb.TagNumber(5)
   void clearData() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $0.SigningError get error => $_getN(5);
+  @$pb.TagNumber(6)
+  set error($0.SigningError v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasError() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearError() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get errorMessage => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set errorMessage($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasErrorMessage() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearErrorMessage() => clearField(7);
 }
 
