@@ -86,9 +86,11 @@ We will first describe what WalletCore library files we need and where to put th
 
 Because official lib build flag in CmakeLists.txt set(CMAKE_CXX_VISIBILITY_PRESET hidden), that will cause android exception when dart ffi lookup function.
 
-Please refer to [My other repo](https://github.com/weishirongzhen/flutter_trust_wallet_core_lib_include) to run full demo,
-also, replace you own build to ensure safety.
-build step: follow [Official build step](https://developer.trustwallet.com/wallet-core/developing-the-library/building) to prepare your build env , then change
+Note that before following the steps to build wallet-core, you need to make sure:
+
+1. Java JDK version is at least `11`. Use `sdkman` to install `Zulu 11 OpenJDK`.
+
+2. Follow [Official build step](https://developer.trustwallet.com/wallet-core/developing-the-library/building) to prepare your build env , then change
 
 ```
  set(CMAKE_CXX_VISIBILITY_PRESET hidden)
@@ -100,4 +102,5 @@ to
  set(CMAKE_CXX_VISIBILITY_PRESET default)
 ```
 
-build project, replace your own output in [My other repo](https://github.com/weishirongzhen/flutter_trust_wallet_core_lib_include).
+
+And then you can (re)run bootstrap.sh again, following with `tools\android-build` to generate `.aar` file.
