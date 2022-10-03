@@ -50,22 +50,21 @@ We will first describe what WalletCore library files we need and where to put th
 
 - We need `SwiftProtobuf.xcframework` and `WalletCore.xcframework` under folder `ios//Frameworks`. These libraries can be downloaded directly from [WalletCore release](https://github.com/trustwallet/wallet-core/releases).
 
-
 ## Android
 
-- We need `trustwalletcore.aar` under folder `android//libs`. This .aar file is the reason we need to re-build WalletCore ourselves with a new flag as noted above.
+- We need `trustwalletcore.aar` under folder `android/libs`. This .aar file is the reason we need to re-build WalletCore ourselves with a new flag as noted above. After wallet-core build, the file can be copied from `build` folder.
 
 ## Dart Protobuf
 
 - The protobuf files are in `wallet-core` repository. So you will need to clone the [repo](https://github.com/trustwallet/wallet-core), check folder `src//proto`.
 
-- Next we will need dart proto-pluggin, run this command `dart pub global activate protoc_plugin` to add it to `protoc` (protoc needs to be installed first).  
+- Next we will need dart proto-pluggin, run this command `dart pub global activate protoc_plugin` to add it to `protoc` (protoc needs to be installed first).
 
 - Create a folder to hold our dart proto files to be generated next, `mkdir dart_proto`
 
 - From root folder of `wallet-core` folder, run this command `protoc -I=./src/proto --dart_out=./dart_proto/ ./src/proto/*.proto`. This command will look for all .proto files under src/proto and generate the dart versions and put them under dart_proto folder.
 
-- 
+-
 
 ## Build WalletCore
 
